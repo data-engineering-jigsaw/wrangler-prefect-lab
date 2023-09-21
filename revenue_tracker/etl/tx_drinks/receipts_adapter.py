@@ -3,6 +3,8 @@ import awswrangler as wr
 from settings import s3_path
 
 def coerce_df(df):
+    if not df.any().any():
+        return df
     numeric_cols = ['taxpayer_number', 'taxpayer_zip', 'taxpayer_county', 
     'location_zip', 'location_county', 'location_number', 'liquor_receipts',
       'beer_receipts', 'wine_receipts', 'cover_charge_receipts', 'total_receipts']
@@ -19,9 +21,6 @@ def coerce_df(df):
     renamed_df = fully_coerced_df.rename(columns={"responsibility_begin_date_yyyymmdd": "response_begin_date","responsibility_end_date_yyyymmdd": "response_end_date", "obligation_end_date_yyyymmdd": 'obligation_end_date'})
     return renamed_df
 
-def write_to_s3(df, partition_cols = ["obligation_end_date"]):
-    wr.s3.to_parquet(df=df,
-                    path=s3_path,
-                    mode='append', dataset = True,
-                    partition_cols = partition_cols)
+
+
     

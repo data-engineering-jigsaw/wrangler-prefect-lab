@@ -1,7 +1,7 @@
 * Then explore the df to see that varies by obligation_end_date_yyyymmdd
 * Look at number of locations per 
-* >>> df.location_address.unique().shape
-* (21,)
+df.location_address.unique().shape
+(21,)
 * df.obligation_end_date.unique().shape
 * (134,)
 * df.shape

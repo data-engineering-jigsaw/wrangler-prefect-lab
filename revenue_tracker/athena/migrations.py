@@ -1,5 +1,7 @@
 import awswrangler as wr
-from settings import s3_path, glue_db
+
+from settings import glue_db, s3_path
+
 databases = wr.catalog.databases()
 
 def create_db():
@@ -17,7 +19,7 @@ def crawl_dataset(table_name):
         table=table_name,
         dataset=True,
         mode="overwrite")
-    return display_schema(table_name)
+    
     
 def display_schema(table_name):
     return wr.catalog.table(database=glue_db, table=table_name)

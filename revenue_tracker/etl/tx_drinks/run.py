@@ -1,8 +1,11 @@
 
-from etl.tx_drinks.receipts_client import find_all_receipts, find_receipts_after, find
-from etl.tx_drinks.receipts_adapter import coerce_df
-from etl.tx_drinks.seed.restaurant_llcs import read_llcs
 import aws_utils as aws_utils
+from etl.tx_drinks.receipts_adapter import coerce_df
+from etl.tx_drinks.receipts_client import (find)
+from etl.tx_drinks.receipts_client import (find_all_receipts,
+                                           find_receipts_after)
+from etl.tx_drinks.seed.restaurant_llcs import read_llcs
+
 
 def find_and_coerce(name):
     receipts_df = find(name) 

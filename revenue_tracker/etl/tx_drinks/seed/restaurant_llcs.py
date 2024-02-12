@@ -22,6 +22,3 @@ def write_llcs(df):
 def read_llcs():
     df = wr.s3.read_parquet(path=f"{s3_path}restaurant_llcs.snappy.parquet")
     return df
-
-
-# write_llcs(llcs_df)

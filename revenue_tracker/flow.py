@@ -1,8 +1,10 @@
-from prefect import task, flow
-import aws_utils as aws_utils
+from prefect import flow, task
 from prefect.server.schemas.schedules import IntervalSchedule
+
+import aws_utils as aws_utils
+import etl.tx_drinks.run as run
 from etl.tx_drinks.seed.restaurant_llcs import read_llcs
-import run as run
+
 
 @task
 def read_restaurants():

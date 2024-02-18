@@ -1,7 +1,7 @@
 import awswrangler as wr
 import pandas as pd
 
-from settings import s3_path
+from settings import llc_path, s3_path
 
 restaurant_llcs = [
     "THE HOUSTON CHEESECAKE FACTORY CORPORATION",
@@ -18,11 +18,11 @@ llcs_df = pd.DataFrame(pd.Series(restaurant_llcs), columns = ['name'])
 
 def write_llcs(df):
     wr.s3.to_parquet(df=df,
-                    path=f"s3://jigsaw-labs-student/restaurant_llcs.snappy.parquet"
+                    path=llc_path
                     )
     
 def read_llcs():
-    df = wr.s3.read_parquet(path=f"s3://jigsaw-labs-student/restaurant_llcs.snappy.parquet")
+    df = wr.s3.read_parquet(path=llc_path)
     return df
 
 

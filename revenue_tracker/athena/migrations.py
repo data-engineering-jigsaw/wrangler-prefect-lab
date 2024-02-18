@@ -1,11 +1,13 @@
 import awswrangler as wr
-from settings import s3_path, glue_db
+
+from settings import glue_db, s3_path
+
 databases = wr.catalog.databases()
 
 def create_db():
     wr.catalog.create_database(glue_db)
 
-def delete_db(glue_db):
+def delete_db():
     wr.catalog.delete_database(
         name=glue_db
     )
